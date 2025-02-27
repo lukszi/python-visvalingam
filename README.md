@@ -98,16 +98,6 @@ This implementation optimizes the process by:
 - Supporting multiple resolution targets in a single pass by processing them in descending order
 - Avoiding redundant calculations when extracting simplified polygons
 
-## Performance
-
-This C implementation offers significant performance improvements over pure Python implementations, especially for large polygons or when simplifying to multiple resolution levels.
-
-For a polygon with 10,000 vertices:
-- Pure Python implementation: ~5-10 seconds
-- This C implementation: ~0.05-0.1 seconds (50-100x faster)
-
-The algorithm has a time complexity of O(n log n), where n is the number of vertices in the original polygon.
-
 ## API Reference
 
 ### `visvalingam_c.simplify_multi(points, resolutions)`
@@ -125,7 +115,3 @@ Simplifies a polygon to multiple resolution levels in a single pass.
 - The polygon can be either open or closed. If closed (first and last points are identical), the function handles it appropriately.
 - Each resolution must be at least 3 and less than the number of input vertices.
 - The returned polygons always include a closure point (first point repeated at the end).
-
-## References
-
-1. Visvalingam, M., & Whyatt, J. D. (1993). "Line generalisation by repeated elimination of points". The Cartographic Journal, 30(1), 46-51.
